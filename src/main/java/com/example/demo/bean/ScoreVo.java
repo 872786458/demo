@@ -3,16 +3,16 @@ package com.example.demo.bean;
 public class ScoreVo {
 
     private int id;
-    //学生名
-    private String names;
-    //学生成绩
-    private int score;
-    //学生年级
-    private String grade;
-    //学生表id
-    private int studentId;
-    //班级表id
-    private int tbGradeId;
+
+    private String names; //学生名
+
+    private int score; //学生成绩
+
+    private String grade; //学生年级
+
+    private int studentId; //学生表id
+
+    private int tbGradeId;//班级表id
 
     public int getStudentId() {
         return studentId;

@@ -5,7 +5,10 @@ import com.example.demo.bean.ResultBean;
 import com.example.demo.util.DBUtils;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * @author 于振华
+ * @create 2019-11-04 22:18
+ */
 @Service
 public class AccountService extends BaseService {
 //用户注册/

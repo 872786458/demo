@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @author 于振华
+ * @create 2019-11-04 22:18
+ */
 @Service
 public class LoginService extends BaseService {
     //登录service

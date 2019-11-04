@@ -8,17 +8,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author 于振华
+ * @create 2019-11-04 22:18
+ */
 @Controller
 public class AccountController {
     @Autowired
     private AccountService accountService;
+
     //跳转注册页面
     @RequestMapping("/register")
-    public Object register(){
+    public Object register() {
         return "register";
     }
+
     /**
-     *
      * @param username
      * @param password
      * @return
@@ -26,7 +31,7 @@ public class AccountController {
     //注册账户请求
     @RequestMapping("/doRegister")
     @ResponseBody
-    public Object registers(String username,String password){
+    public Object registers(String username, String password) {
         System.out.println(username);
         String pass = Md5Utils.md5Utils(password);
         ResultBean account = accountService.addRegister(username, pass);
