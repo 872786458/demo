@@ -8,15 +8,15 @@ public class PageBean<T> {
     private int totalCount;//记录的总数
     private int totalPage;//总页码；
     private List<T> list;//每页的数据
-    private int currentPage;//当前页码
-    private int rows;//每页显示的记录数;
+    private int Page;//当前页码
+    private int limit;//每页显示的记录数;
 //计算总页
     private int totalPage() {
-        if (totalCount % rows == 0) {
-            return totalCount / rows;
+        if (totalCount % limit == 0) {
+            return totalCount / limit;
 
         } else {
-            return (totalCount / rows + 1);
+            return (totalCount / limit + 1);
 
         }
 
@@ -46,30 +46,19 @@ public class PageBean<T> {
         this.list = list;
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public int getPage() {
+        return Page;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public void setPage(int page) {
+        Page = page;
     }
 
-    public int getRows() {
-        return rows;
+    public int getLimit() {
+        return limit;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    @Override
-    public String toString() {
-        return "PageVo{" +
-                "totalCount=" + totalCount +
-                ", totalPage=" + totalPage +
-                ", list=" + list +
-                ", currentPage=" + currentPage +
-                ", rows=" + rows +
-                '}';
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 }

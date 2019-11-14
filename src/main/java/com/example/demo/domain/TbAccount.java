@@ -1,8 +1,12 @@
 package com.example.demo.domain;
 
-public class TbAccount {
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TbAccount extends Domain {
     //注册账户
-    private int id;
+    private  Integer id;
     //账户名
     private String username;
     //账户密码
@@ -12,11 +16,11 @@ public class TbAccount {
      *
      * @return
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

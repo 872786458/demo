@@ -1,11 +1,12 @@
 $(function () {
     $("#submit").click(function () {
-
         var fo = $("form").serialize();
-
-        $.post('/doRegister',fo,function (result) {
+        alert(fo);
+        $.post('/toRegister',fo,function (result) {
             if (result.success==true){
-                window.location.href="/login"
+               window.location.href="/toLogin"
+            }else{
+                alert("账户密码已存在")
             }
 
 

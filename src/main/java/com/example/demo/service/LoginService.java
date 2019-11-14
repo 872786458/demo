@@ -1,54 +1,31 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.ResultBean;
 import com.example.demo.domain.TbAccount;
-import com.example.demo.util.DBUtils;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import net.atomarrow.bean.ServiceResult;
+import net.atomarrow.db.parser.Conditions;
+import net.atomarrow.services.Service;
+import org.springframework.stereotype.Component;
+
 /**
  * @author 于振华
- * @create 2019-11-04 22:18
+ * @create 2019-11-08 21:07
  */
-@Service
-public class LoginService extends BaseService {
-    //登录service
-    public ResultBean login(TbAccount tbAccount) {
-        TbAccount log = listLogin(tbAccount);
-        if (log == null) {
-            ResultBean xiaoxixi = BaseService.failure("对不起账户密码错误");
-            System.out.println(xiaoxixi.getM());
-            return xiaoxixi;
-        } else {
-            System.out.println(log);
-            return success();
-        }
+@Component
+public class LoginService extends Service {
+    public String getTableName(){
+        return TbAccount.class.getSimpleName();
     }
-
-    //查询账户密码dao
-    public TbAccount listLogin(TbAccount tbAccount) {
-        //连接数据库
-        String sql = "SELECT * from tbaccount where username = '" + tbAccount.getUsername() + "' and password = '" + tbAccount.getPassword() + "'";
-        System.out.println(sql);
-        //查询账户
-        TbAccount tbAccountDB =null;
-        List<Map<String, Object>> list1 = DBUtils.getList(sql);
-        if (list1.size()!=0){
-            Map<String, Object> map = list1.get(0);
-            //遍历Map
-            for (Map.Entry<String, Object> entry : map.entrySet()) {
-                tbAccountDB = new TbAccount();
-                if (entry.getKey().equals("password")){
-                    tbAccountDB.setPassword((String) entry.getValue());
-                }
-                if (entry.getKey().equals("username")){
-                    tbAccountDB.setPassword((String) entry.getValue());
-                }
-            }
+    public ServiceResult login(TbAccount account){
+        Conditions conditions = new Conditions(getTableName());
+         conditions.putEW("username", account.getUsername());
+        if (getOne(conditions)!=null){
+            return success(true);
+        }else {
+            return error("用户名密码错误");
         }
 
-        return tbAccountDB;
+
+
     }
 }
-

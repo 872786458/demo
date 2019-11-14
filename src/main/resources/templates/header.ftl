@@ -2,8 +2,8 @@
     <div class="layui-logo">学生信息管理</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item"><a href="/admin">首页</a></li>
-        <li class="layui-nav-item"><a href="/stud">学生信息</a></li>
+        <li class="layui-nav-item"><a href="/toHome">首页</a></li>
+        <li class="layui-nav-item"><a href="/studentList">学生信息</a></li>
         <li class="layui-nav-item"><a href="">用户</a></li>
 
     </ul>

@@ -25,7 +25,7 @@
             <div class="layui-input-inline">
                 <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
-            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+
 
             <div class="layui-form-item" style="position: relative;top: 10px">
                 <div class="layui-input-block">

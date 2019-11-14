@@ -11,7 +11,6 @@ public class Md5Utils {
             //通过Md5计算摘要
             MessageDigest   md = MessageDigest.getInstance("md5");
             byte[] digest = md.digest(password.getBytes("UTF-8"));
-
             //a-z A-Z 0-9 /  * BASE64编码算法
             //1.8
             String enPassword = Base64.getEncoder().encodeToString(digest);

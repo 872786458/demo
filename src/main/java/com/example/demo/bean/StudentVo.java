@@ -4,10 +4,12 @@ import javax.lang.model.element.NestingKind;
 
 public class StudentVo {
     private String name;//学生姓名
-    private int score;//学生成绩
-    private int grade;//学生班级
-    private int scoreId;//学生成绩id
-    private String gradeId;//学生班级id
+    private String scoreName;//学生成绩
+    private String gradeName;//学生班级
+    private Integer studentId;//学生Id
+    private Integer scoreId;//学生成绩id
+    private Integer gradeId;//学生班级id
+    private Integer count;
 
     public String getName() {
         return name;
@@ -17,46 +19,51 @@ public class StudentVo {
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
+    public String getScoreName() {
+        return scoreName;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setScoreName(String scoreName) {
+        this.scoreName = scoreName;
     }
 
-    public int getGrade() {
-        return grade;
+    public String getGradeName() {
+        return gradeName;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public void setGradeName(String gradeName) {
+        this.gradeName = gradeName;
     }
 
-    public int getScoreId() {
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public Integer getScoreId() {
         return scoreId;
     }
 
-    public void setScoreId(int scoreId) {
+    public void setScoreId(Integer scoreId) {
         this.scoreId = scoreId;
     }
 
-    public String getGradeId() {
+    public Integer getGradeId() {
         return gradeId;
     }
 
-    public void setGradeId(String gradeId) {
+    public void setGradeId(Integer gradeId) {
         this.gradeId = gradeId;
     }
 
-    @Override
-    public String toString() {
-        return "StudentsVo{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                ", grade=" + grade +
-                ", scoreId=" + scoreId +
-                ", gradeId=" + gradeId +
-                '}';
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

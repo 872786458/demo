@@ -2,18 +2,10 @@ package com.example.demo.bean;
 
 public class ResultBean {
     private Boolean success;//成功还是失败
-    private int code;//编码
-    private String m;//异常信息
+    private String code;//编码
+    private String msg;//异常信息
     private Object data;//数据
-    private int count;//数据总数
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
+    private int  count;//总数据
 
     public Boolean getSuccess() {
         return success;
@@ -23,20 +15,20 @@ public class ResultBean {
         this.success = success;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getM() {
-        return m;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setM(String m) {
-        this.m = m;
+    public void setMsg( String msg) {
+        this.msg = msg;
     }
 
     public Object getData() {
@@ -46,4 +38,13 @@ public class ResultBean {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
 }

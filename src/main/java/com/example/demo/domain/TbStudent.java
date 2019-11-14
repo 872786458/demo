@@ -1,18 +1,22 @@
 package com.example.demo.domain;
 
-public class TbStudents {
+import net.atomarrow.domains.Domain;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TbStudent extends Domain {
     //学生信息表id
-    private int id;
+    private Integer id;
     //学生名字
     private String name;
     //学生班级id
-    private int gradeId;
+    private Integer gradeId;
 
-    public int getGradeId() {
+    public Integer getGradeId() {
         return gradeId;
     }
 
-    public void setGradeId(int gradeId) {
+    public void setGradeId(Integer gradeId) {
         this.gradeId = gradeId;
     }
 
@@ -24,11 +28,11 @@ public class TbStudents {
         this.name = name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

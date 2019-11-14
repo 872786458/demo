@@ -12,33 +12,33 @@
 
 <#--//修改删除弹出层-->
 <div style="display: none" id="updateOrDelete">
-    <form class="layui-form" lay-filter="dataForm" id="dataFor">
-        <div class="layui-form-item" style="display: none">
+    <form class="layui-form" lay-filter="dataForm" id="dataFor" >
+        <div style="display: none" class="layui-form-item" >
             <label class="layui-form-label">ID</label>
             <div class="layui-input-block">
-                <input type="text" name="scoreId" required lay-verify="required" placeholder="请输入id" autocomplete="off"
+                <input id="studentId" type="text" name="studentId" required lay-verify="required" placeholder="请输入id" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off"
+                <input  id="name" type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">成绩</label>
             <div class="layui-input-inline">
-                <input type="text" name="score" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
+                <input id="score" type="text" name="score" required lay-verify="required" placeholder="请输成绩" autocomplete="off"
                        class="layui-input">
             </div>
-            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+
         </div>
         <div class="layui-form-item" style="width: 50%">
             <label class="layui-form-label">年级</label>
             <div class="layui-input-block">
-                <select name="gradeId" lay-verify="required">
+                <select name="gradeId" lay-verify="required" id="grade">
                     <option value=""></option>
                     <option value="1">一年级</option>
                     <option value="2">二年级</option>
@@ -51,17 +51,15 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" id="but">立即提交</button>
+             <#--   <button class="layui-btn"  lay-filter="formDemo" id="but">立即提交</button>-->
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
+    <button class="layui-btn"  lay-filter="formDemo" id="but" style="position: relative;left: 20%">立即提交</button>
 </div>
 <div class="layui-layout layui-layout-admin">
-    <#--    导入头-->
-    <#include "top.ftl">
-    <#--    导入左侧页面元素-->
-    <#include "left.ftl">
+
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
@@ -72,14 +70,13 @@
                 <div class="layui-form-item" pane style="display: inline-block">
                     <label class="layui-form-label">学生姓名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="name"   placeholder="学生姓名"
-                               autocomplete="off" class="layui-input" id="name">
+                        <input type="text" name="name"  placeholder="学生姓名" autocomplete="off" class="layui-input" id="nameStudent">
                     </div>
                 </div>
                 <div class="layui-form-item" pane style="display: inline-block">
                     <label class="layui-form-label">学生班级</label>
                     <div class="layui-input-block">
-                        <select name="gradeId" id="gradeId" >
+                        <select  name="gradeId" id="gradeId" >
                             <option value=""></option>
                             <option value="1">一年级</option>
                             <option value="2">二年级</option>
@@ -132,29 +129,15 @@
                     var tableIns = table.render({
                         elem: '#test'//渲染目标
                         , url: '/listStudents'//数据接口
-
                        ,id: 'testReload'
-
-                        , page: true
+                        ,page: true
                         ,even:true
-                        ,limit:5
 
 
-                         /* ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
-                              layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
-                              //,curr: 5 //设定初始在第 5 页
-                              ,groups: 5 //只显示 1 个连续页码
-                              ,first: false //不显示首页
-                              ,last: false //不显示尾页
-                              ,theme: '#1E9FFF'
-
-
-                          }*/
                         , done: function (rest, curr, count) {
                             console.log(rest);//后台返回的json字符串
                             console.log(curr);//当前页
                             console.log(count);//数据总条数
-
                         }
                         , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
                         , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
@@ -165,30 +148,26 @@
                         , title: '用户数据表'//excel导出
                         , cols: [[
                             {type: 'checkbox', fixed: 'left'}
-                            , {field: 'scoreId', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                            , {field: 'studentId', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
                             , {field: 'name', title: '学生姓名', width: 120, edit: 'text'}
-
-
                             , {field: 'score', title: '成绩', width: 100}
                             , {field: 'grade', title: '班级'}
-
                             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
                         ]]
 
-
                     });
-
 /*条件查询*/
                     var $ = layui.$, active = {
                         reload: function () {
-                            var name = $("#name");
+                            var name = $("#nameStudent");
+                          /*  console.log($("#nameStudent").val()+"----------");
+                            console.log($("#gradeId").val()+"++++++++++++")*/
                             var gradeId = $("#gradeId");
                             //执行重载
                             table.reload('testReload', {
                                 page: {
                                     curr: 1 //重新从第 1 页开始
-                                },
-                                url: "listStudents"
+                                }
                                 , where: {
                                     'name': name.val(),
                                     'gradeId': gradeId.val()
@@ -203,14 +182,9 @@
                     });
 
                     $('.demoTable .layui-btn').on('click', function(){
-
                         var type = $(this).data('type');
                         active[type] ? active[type].call(this) : '';
                     });
-
-
-
-
 
                     //头工具栏事件
                     table.on('toolbar(test)', function (obj) {
@@ -225,19 +199,19 @@
                                 layer.msg('选中了：' + data.length + ' 个');
                                 break;
                             case 'isAll':
-
-                                alert("导出excel")
+                               /* alert("导出excel")*/
+                                $.post("/doExcel",function (result) {
+                                    window.location.href="/student/doExcel";
+                            });
                                 break;
                             case 'add':
                                 addStudents()
                                 break;
-
                             //自定义头工具栏右侧图标 - 提示
                             case 'LAYTABLE_TIPS':
                                 layer.alert('这是工具栏右侧自定义的一个图标按钮');
                                 break;
                         }
-
                     });
                     //请求路径
                     var url;
@@ -275,24 +249,24 @@
                         });
                     }
 
-                    //监听提交事件
-                    form.on("submit(formDemo)", function (obj) {
-                        //序列化表单提交数据
-                        var serialize = $("#dataFor").serialize();
-
-                        alert(serialize);
-                        //发送ajasx请求
-                        var id =obj.id
-                        alert(id);
-                        $.post(url, serialize, function (result) {
+//修改
+                    $("#but").click(function () {
+                       // var serialize = $("#dataFor").serialize();
+                        var id = $("#studentId").val();
+                        var name = $("#name").val();
+                        var score = $("#score").val();
+                        var gradeId = $("#grade").val();
+                        alert(gradeId+""+score);
+                        $.post(url, { id:id,name:name,score:score,gradeId:gradeId}, function (result) {
                             layer.msg("成功");
                             //关闭弹出层
                             layer.close(mainIndex);
                             //刷新数据表格
                             tableIns.reload();
                         });
-
                     });
+
+
                     //监听行工具事件
                     table.on('tool(test)', function (obj) {
                         var data = obj.data;//获得当前行数据
@@ -301,33 +275,26 @@
                             layer.confirm('真的删除行么', function (index) {
                                 obj.del();
                                 layer.close(index);//向服务端发送删除指令
-                                alert(data.score);
+                                 alert(data.studentId);
                                 //删除事件
-                                $.post("/delStudent", {id: data.id, score: data.score}, function () {
+                                $.post("/delStudent", {id: data.studentId, score: data.score}, function () {
                                 });
+
                             });
                         } else if (obj.event === 'edit') {//编辑
                             modify(data);
-
                         }
                     });
 
-                    $("#subStudent").click(function () {
+                   /* $("#subStudent").click(function () {
                        var serialize = $("#formStudent").serialize();
-                       alert(serialize)
                         $.post("/listStudents",serialize,function () {
                         })
-                    });
+                    });*/
                 });
-
 
             </script>
         </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
 </div>
 </div>
  </body>
