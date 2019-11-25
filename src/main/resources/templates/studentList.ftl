@@ -181,10 +181,6 @@
                         return false;
                     });
 
-                    $('.demoTable .layui-btn').on('click', function(){
-                        var type = $(this).data('type');
-                        active[type] ? active[type].call(this) : '';
-                    });
 
                     //头工具栏事件
                     table.on('toolbar(test)', function (obj) {

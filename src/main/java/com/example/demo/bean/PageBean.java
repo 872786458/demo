@@ -10,17 +10,6 @@ public class PageBean<T> {
     private List<T> list;//每页的数据
     private int Page;//当前页码
     private int limit;//每页显示的记录数;
-//计算总页
-    private int totalPage() {
-        if (totalCount % limit == 0) {
-            return totalCount / limit;
-
-        } else {
-            return (totalCount / limit + 1);
-
-        }
-
-    }
 
     public int getTotalCount() {
         return totalCount;
